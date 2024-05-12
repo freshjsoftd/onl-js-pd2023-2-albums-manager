@@ -5,7 +5,7 @@ import {
 	Link,
 	Switch,
 	Route,
-  Redirect
+	Redirect,
 } from 'react-router-dom';
 import './App.css';
 import Albums from './components/albums/Albums';
@@ -20,10 +20,19 @@ function App() {
 						<a href='/albums'>Test</a>
 					</li> */}
 					<li>
-						<NavLink to='/albums'>Albums</NavLink>
+						<NavLink to='/albums' activeClassName='selected'>
+							Albums
+						</NavLink>
 					</li>
 					<li>
-						<NavLink to='/users'>Users</NavLink>
+						<NavLink
+							to='/users'
+							style={(isActive) => ({
+								color: isActive ? 'green' : 'blue',
+							})}
+						>
+							Users
+						</NavLink>
 					</li>
 					<li>
 						<Link to='/'>Home</Link>
@@ -35,12 +44,15 @@ function App() {
 					Home
 				</Route>
 				<Route path='/albums'>
-					<Albums movies='movie'/>
+					<Albums movies='movie' />
 				</Route>
-				<Route path='/users' render={(props) => <Users {...props} title='User'/>}/>
+				<Route
+					path='/users'
+					render={(props) => <Users {...props} title='User' />}
+				/>
 				{/* <Route path='/users' component={Users}/> */}
-        <Redirect path='*' to='albums'/>
-        {/* <Redirect from='*' to='albums'/> */}
+				<Redirect path='*' to='albums' />
+				{/* <Redirect from='*' to='albums'/> */}
 				{/* <Route path='*'>
 					<Redirect to='albums'/>
 				</Route> */}
