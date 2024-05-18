@@ -28,7 +28,7 @@ function App() {
 						<NavLink
 							to='/users'
 							style={(isActive) => ({
-								color: isActive ? 'green' : 'blue',
+								color: isActive ? 'red' : 'blue',
 							})}
 						>
 							Users
