@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // ================================
 import { getAllUsers, deleteUser } from '../../store/slices/usersSlice';
 // ================================
@@ -12,7 +12,7 @@ function UsersList() {
 
   const users = useSelector((state) => state.usersList.users)
 
-  const {url} = useRouteMatch()
+  // const {url} = useRouteMatch()
 
 	useEffect(() => {
     dispatch(getAllUsers())
@@ -23,12 +23,12 @@ function UsersList() {
           {users.map((user) => {
             return (
               <li key={user.id} className='item-container'>
-                <Link to={`${url}/${user.id}`} className='nav-user'>
+                <Link to={`${user.id}`} className='nav-user'>
                   <p className='user'>
                     {user.name} {user.id}
                   </p>
                 </Link>
-                <Link to={`${url}/add/${user.id}`}>
+                <Link to={`add/${user.id}`}>
                   <p id='edit'>Edit</p>
                 </Link>
                 <p

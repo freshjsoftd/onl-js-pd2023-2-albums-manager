@@ -1,11 +1,11 @@
 // import React from 'react'
 
 import {
-	Switch,
+	Routes,
 	Route,
 	NavLink,
-	Redirect,
-	useRouteMatch,
+	Navigate,
+	// useRouteMatch,
 } from 'react-router-dom';
 import UserForm from './UserForm';
 import AlbumPhotos from '../albums/AlbumPhotos';
@@ -13,25 +13,21 @@ import UserAlbums from './UserAlbums';
 import UsersList from './UsersList';
 
 function Users() {
-	const { path, url } = useRouteMatch();
+	// const { path, url } = useRouteMatch();
 
 	return (
 		<>
 			<nav>
-				<NavLink to={`${url}/add`}>Add</NavLink>
+				<NavLink to='add'>Add</NavLink>
 			</nav>
 			<hr />
-			<Switch>
-				<Route path={`${path}/add/:id`} component={UserForm} />
-				<Route path={`${path}/add`}>
-					<Redirect to={`${url}/add/:id`}>
-						<UserForm />
-					</Redirect>
-				</Route >
-				<Route path={`${path}/album/:id`} component={AlbumPhotos}/>
-				<Route path={`${path}/:id`} component={UserAlbums}/>
-				<Route path={`${path}`} component={UsersList}/>
-			</Switch>
+			<Routes>
+				<Route path='add/:id' element={<UserForm />} />
+				<Route path='add' element={<Navigate to=':id'/>} />
+				<Route path='album/:id 'element={<AlbumPhotos />}/>
+				<Route path=':id' element={<UserAlbums />}/>
+				<Route path='/' element={<UsersList />}/>
+			</Routes>
 		</>
 	);
 }

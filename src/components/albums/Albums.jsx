@@ -1,25 +1,21 @@
 // import React from 'react'
 
-import { Switch, Route, useRouteMatch } from 'react-router-dom';
+import { Routes, Route} from 'react-router-dom';
 
 import AlbumPhotos from './AlbumPhotos';
 import AlbumsList from './AlbumsList';
 
 function Albums() {
 
-    const {path} = useRouteMatch();
+    // const {path} = useRouteMatch();
     // console.log(match)
 
 	return (
 		<>
-			<Switch>
-				<Route path={`${path}/:id`}>
-					<AlbumPhotos />
-				</Route>
-				<Route path={`${path}`}>
-					<AlbumsList />
-				</Route>
-			</Switch>
+			<Routes>
+				<Route path=':id`' element={<AlbumPhotos />} />
+				<Route path='/' element={<AlbumsList />} />
+			</Routes>
 		</>
 	);
 }

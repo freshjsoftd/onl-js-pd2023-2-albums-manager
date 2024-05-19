@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // ===========================
 import { getAlbums } from '../../store/slices/albumSlice';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // ===========================
 import './AlbumsList.css'
 
@@ -11,7 +11,7 @@ function AlbumsList() {
 
 	const albums = useSelector((state) => state.albumsList.albums);
 
-	const { url } = useRouteMatch();
+	// const { url } = useRouteMatch();
 
 	useEffect(() => {
 		dispatch(getAlbums());
@@ -22,7 +22,7 @@ function AlbumsList() {
 			{albums.map(({ id, title }) => {
 				return (
 					<li key={id} className='album-item'>
-						<Link to={`${url}/${id}`}>{title}</Link>
+						<Link to={`${id}`}>{title}</Link>
 					</li>
 				);
 			})}

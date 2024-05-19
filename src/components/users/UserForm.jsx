@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 // =========================
 import {emptyUser} from '../../constants';
 import { createUser, updateUser } from '../../store/slices/usersSlice'; 
@@ -15,7 +15,7 @@ function UserForm() {
 
   const {id} = useParams()
 
-  const history = useHistory()
+  const navigate = useNavigate()
 
   // console.log(history)
 
@@ -32,7 +32,7 @@ function UserForm() {
     })
   }
 
-  const goHome = () => history.go(-1)
+  const goHome = () => navigate(-1)
 
   const onReset = (e) => {
     e.preventDefault();

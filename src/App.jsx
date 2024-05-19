@@ -3,17 +3,20 @@ import {
 	BrowserRouter as Router,
 	NavLink,
 	Link,
-	Switch,
+	Routes,
 	Route,
-	Redirect,
+	Navigate,
 } from 'react-router-dom';
 import './App.css';
 import Albums from './components/albums/Albums';
 import Users from './components/users/Users';
 // ==============================
+import { setActive } from './services/style-service';
 import './App.css'
 
 function App() {
+
+	// const setActive = ({isActive}) => isActive ? 'selected' : ''
 	return (
 		<Router>
 			<div className='header'>
@@ -22,7 +25,10 @@ function App() {
 						<a href='/albums'>Test</a>
 					</li> */}
 					<li>
-						<NavLink to='/albums' activeClassName='selected'>
+						<NavLink 
+							to='/albums'
+							className={setActive}
+							>
 							Albums
 						</NavLink>
 					</li>
@@ -41,24 +47,14 @@ function App() {
 					</li>
 				</ul>
 			</div>
-			<Switch>
-				<Route path='/' exact>
+			<Routes>
+				<Route path='/'>
 					Home
 				</Route>
-				<Route path='/albums'>
-					<Albums movies='movie' />
-				</Route>
-				<Route
-					path='/users'
-					render={(props) => <Users {...props} title='User' />}
-				/>
-				{/* <Route path='/users' component={Users}/> */}
-				<Redirect path='*' to='/' />
-				{/* <Redirect from='*' to='albums'/> */}
-				{/* <Route path='*'>
-					<Redirect to='albums'/>
-				</Route> */}
-			</Switch>
+				<Route path='/albums/*' element={<Albums />}/>
+				<Route path='/users/*' element={<Users />} />
+				<Route path='*' element={<Navigate to='/'/>} />
+			</Routes>
 		</Router>
 	);
 }
