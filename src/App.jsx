@@ -10,6 +10,8 @@ import {
 import './App.css';
 import Albums from './components/albums/Albums';
 import Users from './components/users/Users';
+// ==============================
+import './App.css'
 
 function App() {
 	return (
@@ -51,7 +53,7 @@ function App() {
 					render={(props) => <Users {...props} title='User' />}
 				/>
 				{/* <Route path='/users' component={Users}/> */}
-				<Redirect path='*' to='albums' />
+				<Redirect path='*' to='/' />
 				{/* <Redirect from='*' to='albums'/> */}
 				{/* <Route path='*'>
 					<Redirect to='albums'/>
