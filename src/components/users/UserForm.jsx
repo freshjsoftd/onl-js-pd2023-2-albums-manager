@@ -3,6 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
+
+import {TextField} from '@mui/material'
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import SaveIcon from '@mui/icons-material/Save';
 // =========================
 import { emptyUser } from '../../constants';
 import { createUser, updateUser } from '../../store/slices/usersSlice';
@@ -65,6 +70,7 @@ function UserForm() {
 				<div className='field-container'>
 					<label htmlFor='name'>Name</label>
 					<Field
+						as={TextField}
 						type='text'
 						name='name'
 						id='name'
@@ -159,13 +165,24 @@ function UserForm() {
 						/>
 					</div>
 				</fieldset>
-				<div className='btn-group'>
-					<button type='submit' disabled={!isValid}>
+				<Stack 
+					direction='row' 
+					justifyContent='center'
+					spacing={10}
+					>
+					<Button 
+						type='submit' 
+						disabled={!isValid}
+						variant='contained'
+						size='large'
+						startIcon={<SaveIcon />}
+						endIcon={<SaveIcon />}
+						>
 						Save
-					</button>
-					<button type='reset' >Reset</button>
-					<button type='button' onClick={goHome}>Return</button>
-				</div>
+					</Button>
+					<Button type='reset' >Reset</Button>
+					<Button type='button' onClick={goHome}>Return</Button>
+				</Stack>
 			</Form>
 		);
 	};
