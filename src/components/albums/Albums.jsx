@@ -13,7 +13,7 @@ function Albums() {
 	return (
 		<>
 			<Routes>
-				<Route path=':id`' element={<AlbumPhotos />} />
+				<Route path=':id' element={<AlbumPhotos />} />
 				<Route path='/' element={<AlbumsList />} />
 			</Routes>
 		</>

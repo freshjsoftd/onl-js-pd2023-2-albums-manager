@@ -8,7 +8,6 @@ import {
 	// useRouteMatch,
 } from 'react-router-dom';
 import UserForm from './UserForm';
-import AlbumPhotos from '../albums/AlbumPhotos';
 import UserAlbums from './UserAlbums';
 import UsersList from './UsersList';
 
@@ -24,7 +23,6 @@ function Users() {
 			<Routes>
 				<Route path='add/:id' element={<UserForm />} />
 				<Route path='add' element={<Navigate to=':id'/>} />
-				<Route path='album/:id 'element={<AlbumPhotos />}/>
 				<Route path=':id' element={<UserAlbums />}/>
 				<Route path='/' element={<UsersList />}/>
 			</Routes>
