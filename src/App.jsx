@@ -27,8 +27,11 @@ function App() {
 	return (
 		<Router>
 			<Box sx={{ flexGrow: 1, width: '900px'}}>
-				<AppBar position='static'>
-					<Toolbar>
+				<AppBar 
+					position='static' 
+					sx={{backgroundColor: 'primary.dark'}}
+					>
+					<Toolbar sx={{ flexGrow: 1, width: '900px'}}>
 						<IconButton
 							size='large'
 							edge='start'

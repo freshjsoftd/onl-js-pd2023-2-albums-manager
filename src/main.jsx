@@ -12,9 +12,9 @@ import './index.css';
 const theme = createTheme({
 	palette: {
 		primary: {
-			main: '#D10808',
-			light: '#D6C8E1',
-			dark: '#82A2B5'
+			main: '#20B2AA',
+			light: '#40E0D0',
+			dark: '#008080'
 		}
 	},
 	typography: {
